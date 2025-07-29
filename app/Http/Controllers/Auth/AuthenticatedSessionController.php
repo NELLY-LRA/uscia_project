@@ -44,4 +44,15 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    protected function authenticated(Request $request, $user)
+{
+    if ($user->role === 'super-admin') {
+        return redirect()->route('superadmin.dashboard');
+    }
+
+    // Add more roles if needed in the future
+    abort(403, 'unauthorized');
+}
+
 }
