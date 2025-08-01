@@ -31,41 +31,64 @@
 
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr class="text-center text-white">
-                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Address</th>
-                                @if (auth()->user()->role == 'superadmin')
-                                    <th>Actions</th>
-                                @endif
+                                <th>Grade</th>
+                                <th>Country</th>
+
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
                                 <tr class="text-center text-white">
                                     <td class="text-info font-weight-bold">
-                                    <a href="{{ route('accountProfile', $item->id) }}">
-    {{ $item->last_name }} {{ $item->first_name }}
-</a>    </td>
+                                        @if ($item->last_name != null)
+                                            <a href="{{ route('accountProfile', $item->id) }}"> {{ $item->last_name }}</a>
+                                        @endif
+                                    </td>
+                                    <td><a href="{{ route('accountProfile', $item->id) }}"> {{ $item->first_name }}</a></td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->address }}</td>
+                                    <td>{{ $item->grade }}</td>
+                                    <td>{{ $item->country }}</td>
 
-                                    @if (auth()->user()->role == 'superadmin')
+                                   <!-- @if (auth()->user()->role === 'superadmin')
                                         <td>
-                                            <a href="{{ route('deleteAdminAccount', $item->id) }}">
-                                                <button class="btn btn-sm btn btn-danger"><i
-                                                        class="fa-solid fa-trash-can"></i></button>
-                                            </a>
-                                            <a href="{{ route('changeAdminRole', $item->id) }}">
-                                                <button class="btn btn-sm btn btn-dark text-white">Change to Admin role<i
-                                                        class="p-1 fa-solid fa-arrow-up"></i></button>
-                                            </a>
+                                            @if (auth()->user()->id != $item->id)
+                                                <a href="{{ route('deleteAdminAccount', $item->id) }}">
+                                                    <button class="btn btn-sm btn btn-danger"><i
+                                                            class="fa-solid fa-trash-can"></i></button>
+                                                </a>
+                                                <a href="{{ route('changeUserRole', $item->id) }}">
+                                                    <button class="btn btn-sm bg-dark text-white">Change to User role <i
+                                                            class="p-1 fa-solid fa-arrow-down"></i></button>
+                                                </a>
+                                                <a href="{{ route('editAdmin', $item->id) }}">
+                                                    <button class="btn btn-sm btn-primary"><i
+                                                            class="fa-solid fa-pen-to-square"></i></button>
+                                                </a>
+                                            @endif
                                         </td>
-                                    @endif
+                                    @endif -->
+
+                                    <td>
+                                        <a href="{{ route('editUser', $item->id) }}" class="btn btn-sm btn-primary"> update </a>
+                                        <a href="{{ route('changeAdminRole', $item->id) }}" class="btn btn-sm btn-primary"> Change to User role
+                                            <i class="p-1 fa-solid fa-arrow-down"></i>
+                                        </a>
+                                        <form action="{{ route('deleteUserAccount', $item->id) }}" methode="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button tye="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Administrator?')">Delete</button>
+                                        </form>
+                                    </td>
+
                                 </tr>
                             @endforeach
 

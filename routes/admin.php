@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\AdminController;
 
 /*admin
 Route::group(['prefix' => 'admin' , 'middleware' => ['auth','admin']], function(){
@@ -22,7 +23,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth','admin']], function(
 
     });
 
-   
+
     /*role
     Route::prefix('role')->group(function(){
         Route::get('list',[RoleChangeController::class, 'adminList'])->name('adminList');
@@ -34,4 +35,20 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth','admin']], function(
         Route::get('changeAdminRole/{id}',[RoleChangeController::class, 'changeAdminRole'])->name('changeAdminRole');
 
     });*/
-   
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/{country}/dashboard', function ($country) {
+        $user = Auth::user();
+
+        if ($user->role !== 'admin') abort(403);
+
+        if (strtolower($user->country->name) !== strtolower($country)) {
+            abort(403, 'Vous ne pouvez pas accéder au dashboard d’un autre pays');
+        }
+
+        return view("admin.dashboards.$country"); // Exemple : admin/dashboards/cameroun.blade.php
+    })->name('admin.dashboard');
+});

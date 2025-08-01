@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+         Schema::create('users', function (Blueprint $table) {
             $table->id();
     $table->string('last_name');
     $table->string('first_name')->nullable();
@@ -35,9 +35,12 @@ return new class extends Migration
     $table->string('criminal_record')->nullable();
     $table->boolean('has_been_convicted')->default(false)->nullable();
     $table->boolean('is_pastor')->default(false)->nullable();
-    $table->string('role')->default('member'); // 'super_admin', 'national_admin', etc.
+    $table->string('role')->default('user'); // 'super_admin', 'national_admin', etc.
     $table->string('password');
     $table->timestamps();
+
+    // Ajout du champ country_id avec clé étrangère
+
         });
     }
 
@@ -46,6 +49,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+                Schema::dropIfExists('users');
+
     }
 };

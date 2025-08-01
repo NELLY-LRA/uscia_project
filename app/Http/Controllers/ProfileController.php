@@ -19,33 +19,40 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+public function editAdmin($id)
+{
+    $admin = User::findOrFail($id);
+    return view('profile.edit', compact('admin'));
+}
+
+public function updateAdmin(Request $request, $id)
+{
+
+    $request->validate([
+        'last_name' => 'required|string|max:255',
+        'first_name' => 'nullable|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'phone' => 'nullable|string|max:20',
+        'grade' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+
+    ]);
+ $user = User::findOrFail($id);
+
+    if ($user->role === 'superadmin') {
+        return back()->with('error', 'You cannot edit the Super Admin.');
     }
+    $admin = User::findOrFail($id);
+    $admin->update($request->only([
+        'last_name',
+        'first_name',
+        'email',
+        'phone',
+        'grade',
+        'country',
+    ]));
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-
-
-
-  //$this->validationCheck($request);
-       // $adminData = $this -> requestAdminData($request);
-
+    return redirect()->route('adminList')->with('success', 'Admin updated successfully.');
 
         if($request->hasFile('image')){
             //delete old image
@@ -56,7 +63,7 @@ class ProfileController extends Controller
                 }
             }
             //upload new image
-            $fileName = uniqid() . $request->file('image')->getClientOriginalName();
+            $fileName = uniqid() . $request->file('image')->getUserOriginalName();
             $request->file('image')->move(public_path(). '/Profile/' , $fileName);
             $adminData['profile'] = $fileName;
         }
@@ -90,6 +97,8 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+
+
     }
 
 

@@ -1,9 +1,7 @@
-@extends('layouts.partials')
 
-@section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <!-- DataTales Example -->
+        <!-- DataTales Example
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="">
@@ -42,17 +40,32 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                        <input type="text" name="name"
+                                        <label for="exampleFormControlInput1" class="form-label">Last_Name</label>
+                                        <input type="text" name="last_name"
                                             @if (auth()->user()->provider != 'simple') disabled @endif
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            id="exampleFormControlInput1" placeholder="Name..."
-                                            value="{{ old('name', auth()->user()->name == null ? auth()->user()->nickname : auth()->user()->name) }}">
-                                        @error('name')
+                                            class="form-control @error('last_name') is-invalid @enderror"
+                                            id="exampleFormControlInput1" placeholder="Last Name..."
+                                            value="{{ old('last_name', auth()->user()->name == null ? auth()->user()->last_name : auth()->user()->first_name) }}">
+                                        @error('last_name')
                                             <small class="invalid-feedback">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
+
+                                 <div class="col">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">First_Name</label>
+                                        <input type="text" name="first_name"
+                                            @if (auth()->user()->provider != 'simple') disabled @endif
+                                            class="form-control @error('first_name') is-invalid @enderror"
+                                            id="exampleFormControlInput1" placeholder="First Name..."
+                                            value="{{ old('first_name', auth()->user()->name == null ? auth()->user()->first_name : auth()->user()->first_name) }}">
+                                        @error('first_name')
+                                            <small class="invalid-feedback">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -113,5 +126,78 @@
         </div>
 
     </div>
-    <!-- /.container-fluid -->
+    /.container-fluid -->
+
+
+    @extends('admin.layouts.app')
+
+@section('content')
+    <div class="container mt-5">
+        <h2>My Profile</h2>
+        <form method="POST" action="{{ route('admin.profile.update', $admin->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="form-control" value="{{ old('last_name', $admin->last_name) }}" required>
+                @error('last_name')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" name="first_name" class="form-control" value="{{ old('first_name', $admin->first_name) }}" required>
+                @error('first_name')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" required>
+                @error('email')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" name="phone" class="form-control" value="{{ old('phone', $admin->phone) }}">
+                @error('phone')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="grade" class="form-label">Grade</label>
+                <input type="text" name="grade" class="form-control" value="{{ old('grade', $admin->grade) }}">
+                @error('grade')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="country" class="form-control" value="{{ old('country', $admin->country) }}">
+                @error('country')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="profile" class="form-label">Profile Photo</label><br>
+                @if ($admin->profile)
+                    <img src="{{ asset('storage/profiles/' . $admin->profile) }}" alt="Profile image" width="100" class="mb-2"><br>
+                @endif
+                <input type="file" name="profile" class="form-control">
+                @error('profile')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
 @endsection

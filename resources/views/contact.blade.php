@@ -1,328 +1,310 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.guest')
+@section('content')
+    <div id="pagetitle" class="page-title bg-image ">
 
-<head>
-    <title>Contact us - USCIA</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <!-- Load Require CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <!-- Font CSS -->
-    <link href="assets/css/boxicon.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
-<!--
-
-TemplateMo 561 Purple Buzz
-
-https://templatemo.com/tm-561-purple-buzz
-
--->
-</head>
-
-<body>
-    <!-- Header -->
-     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0b2e4d;">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="assets/Logo-chaplain120.png" alt="USCIA Logo" width="40" height="40"> USCIA
-      </a>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Search</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="about">About us</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn-outline" href="{{route('login')}}">Log in</a>
-          </li>
-        </ul>
-      </div>
-
-
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
-
-
-    </div>
-  </nav>
-    <!-- Close Header -->
-
-    <!-- Start Banner Hero -->
-    <section class="bg-light">
-        <div class="container py-4">
-            <div class="row align-items-center justify-content-between">
-                <div class="contact-header col-lg-4">
-                    <h1 class="h2 pb-3 text-secondary"></h1>
-                    <h3 class="h4 regular-400">Hi !!</h3>
-                    <p class="light-300">
-Write to us with any of your queries or email us regarding any verification or information about the organization. General inquiries will be addressed through the form.
- For any grievance related or to work with us, drop a mail at<a rel="nofollow" href="https://storyset.com/" target="_blank">StorySet</a>.
-                    </p>
-                </div>
-                <div class="contact-img col-lg-5 align-items-end col-md-4">
-                    <img src="./assets/img/banner-img-01.svg">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Hero -->
-
-
-    <!-- Start Contact -->
-    <section class="container py-5">
-
-
-        <div class="row pb-4">
-            <div class="col-lg-4">
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='display-6 bx bx-news'></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9  light-300">
-                        <li class="h5 mb-0">Media Contact</li>
-                        <li class="text-muted">Mr. John Doe</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="border py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='bx bx-laptop display-6' ></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9 light-300">
-                        <li class="h5 mb-0">Technical Contact</li>
-                        <li class="text-muted">Mr. John Stiles</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="border py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='bx bx-money display-6'></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9 light-300">
-                        <li class="h5 mb-0">Billing Contact</li>
-                        <li class="text-muted">Mr. Richard Miles</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-            </div>
-
-
-            <!-- Start Contact Form -->
-            <div class="col-lg-8 ">
-                <form class="contact-form row" method="post" action="#" role="form">
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname" placeholder="Name">
-                            <label for="floatingname light-300">Name</label>
-                        </div>
-                    </div><!-- End Input Name -->
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail" placeholder="Email">
-                            <label for="floatingemail light-300">Email</label>
-                        </div>
-                    </div><!-- End Input Email -->
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingphone" name="inputphone" placeholder="Phone">
-                            <label for="floatingphone light-300">Phone</label>
-                        </div>
-                    </div><!-- End Input Phone -->
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="inputcompany" placeholder="Company Name">
-                            <label for="floatingcompany light-300">Company Name</label>
-                        </div>
-                    </div><!-- End Input Company Name -->
-
-                    <div class="col-12">
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingsubject" name="inputsubject" placeholder="Subject">
-                            <label for="floatingsubject light-300">Subject</label>
-                        </div>
-                    </div><!-- End Input Subject -->
-
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control light-300" rows="8" placeholder="Message" id="floatingtextarea"></textarea>
-                            <label for="floatingtextarea light-300">Message</label>
-                        </div>
-                    </div><!-- End Textarea Message -->
-
-                    <div class="col-md-12 col-12 m-auto text-end">
-                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Send Message</button>
-                    </div>
-
-                </form>
-            </div>
-            <!-- End Contact Form -->
-
-
-        </div>
-    </section>
-    <!-- End Contact -->
-
-     <!-- Start Footer -->
-    <footer class="custom-footer pt-4">
         <div class="container">
-            <div class="row py-4">
+            <div class="page-title-inner">
 
-                <div class="col-lg-3 col-12 align-left">
-                    <a class="navbar-brand" href="index.html">
-                        <i class='bx bx-buildings bx-sm text-light'></i>
-                        <span class="text-light h5">USCIA</span>
-                    </a>
-                    <p class="text-light my-lg-4 my-2">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut.
-                    </p>
-                    <ul class="list-inline footer-icons light-300">
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="http://facebook.com/">
-                                <i class='bx bxl-facebook-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.linkedin.com/">
-                                <i class='bx bxl-linkedin-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
-                                <i class='bx bxl-whatsapp-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.flickr.com/">
-                                <i class='bx bxl-flickr-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.medium.com/">
-                                <i class='bx bxl-medium-square bx-md' ></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="page-title-holder">
+                    <h1 class="page-title">Contact</h1>
                 </div>
 
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
-                        <ul class="list-unstyled text-light light-300">
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Our Works</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Branding</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Business</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Marketing</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Social Media</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Digital Solution</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Graphic</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com">info@company.com</a>
-                        </li>
-                    </ul>
-                </div>
-
+                <ul class="ct-breadcrumb">
+                    <li><a class="breadcrumb-entry" href="{{ route('/') }}">Home</a></li>
+                    <li><span class="breadcrumb-entry">Contact</span></li>
+                </ul>
             </div>
         </div>
+    </div>
+    <div id="content" class="site-content">
+        <div class="content-inner">
+            <div class="ct-page-content content-container">
+                <div class="row content-row">
+                    <div id="primary" class="content-area content-full-width col-12">
+                        <main id="main" class="site-main">
 
-        <div class="foot-col w-100 py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-lg-6 col-sm-12">
-                        <p class="text-lg-start text-center text-light light-300">
-                            © Copyright us.chaplain. All Rights Reserved.
-                        </p>
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <p class="text-lg-end text-center text-light light-300">
-                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>TemplateMo</strong></a>
-                        </p>
-                    </div>
+                            <article id="post-24" class="post-24 page type-page status-publish hentry">
+                                <div class="entry-content clearfix">
+                                    <div data-elementor-type="wp-page" data-elementor-id="24"
+                                        class="elementor elementor-24">
+                                        <section
+                                            class="elementor-section elementor-top-section elementor-element elementor-element-99fbaeb elementor-section-boxed elementor-section-height-default elementor-section-height-default ct-header-fixed-none ct-row-max-none"
+                                            data-id="99fbaeb" data-element_type="section">
+
+                                            <div class="elementor-container elementor-column-gap-extended ">
+                                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-e818542"
+                                                    data-id="e818542" data-element_type="column">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-c8a2f48 elementor-widget elementor-widget-ct_fancy_box"
+                                                            data-id="c8a2f48" data-element_type="widget"
+                                                            data-widget_type="ct_fancy_box.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="ct-fancy-box ct-fancy-box-layout1 style1 "
+                                                                    data-wow-delay="ms">
+                                                                    <div class="item--icon">
+                                                                        <span class="item--shape"></span>
+                                                                        <i aria-hidden="true"
+                                                                            class="fas fa-map-marker-alt"></i> <a
+                                                                            class="item--link" href="#"></a>
+                                                                    </div>
+                                                                    <div class="item--holder">
+                                                                        <h3 class="item--title">
+                                                                            Head office address: </h3>
+                                                                        <div class="item--description">Douala, cameroon
+                                                                            <br />
+                                                                            723N. Sylvia Ave. Fort Worth, TX 7611 USA</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-d5f3e79"
+                                                    data-id="d5f3e79" data-element_type="column">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-9e16110 elementor-widget elementor-widget-ct_fancy_box"
+                                                            data-id="9e16110" data-element_type="widget"
+                                                            data-widget_type="ct_fancy_box.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="ct-fancy-box ct-fancy-box-layout1 style1 "
+                                                                    data-wow-delay="ms">
+                                                                    <div class="item--icon">
+                                                                        <span class="item--shape"></span>
+                                                                        <i aria-hidden="true" class="fas fa-phone-alt"></i>
+                                                                        <a class="item--link" href="#"></a>
+                                                                    </div>
+                                                                    <div class="item--holder">
+                                                                        <h3 class="item--title">
+                                                                            Call for help: </h3>
+                                                                        <div class="item--description">(+237) 691 155 536 /
+                                                                            650 766 008<br />
+                                                                            (+1) 903 336 0439</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-729a4d3"
+                                                    data-id="729a4d3" data-element_type="column">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-485cc85 elementor-widget elementor-widget-ct_fancy_box"
+                                                            data-id="485cc85" data-element_type="widget"
+                                                            data-widget_type="ct_fancy_box.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="ct-fancy-box ct-fancy-box-layout1 style1 "
+                                                                    data-wow-delay="ms">
+                                                                    <div class="item--icon">
+                                                                        <span class="item--shape"></span>
+                                                                        <i aria-hidden="true" class="fas fa-envelope"></i>
+                                                                        <a class="item--link" href="#"></a>
+                                                                    </div>
+                                                                    <div class="item--holder">
+                                                                        <h3 class="item--title">
+                                                                            Mail Us: </h3>
+                                                                        <div class="item--description">
+                                                                            info@usciachaplainsafrica.org<br />
+                                                                            info@usciachaplains.org</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section
+                                            class="elementor-section elementor-top-section elementor-element elementor-element-d8bdc5a elementor-section-boxed elementor-section-height-default elementor-section-height-default ct-header-fixed-none ct-row-max-none"
+                                            data-id="d8bdc5a" data-element_type="section">
+
+                                            <div class="elementor-container elementor-column-gap-extended ">
+                                                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-13f51f0"
+                                                    data-id="13f51f0" data-element_type="column"
+                                                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-12c802c elementor-widget elementor-widget-image"
+                                                            data-id="12c802c" data-element_type="widget"
+                                                            data-widget_type="image.default">
+                                                            <div class="elementor-widget-container">
+                                                                <style>
+                                                                    /*! elementor - v3.15.0 - 20-08-2023 */
+                                                                    .elementor-widget-image {
+                                                                        text-align: center
+                                                                    }
+
+                                                                    .elementor-widget-image a {
+                                                                        display: inline-block
+                                                                    }
+
+                                                                    .elementor-widget-image a img[src$=".svg"] {
+                                                                        width: 48px
+                                                                    }
+
+                                                                    .elementor-widget-image img {
+                                                                        vertical-align: middle;
+                                                                        display: inline-block
+                                                                    }
+                                                                </style> <img fetchpriority="high" decoding="async"
+                                                                    width="626" height="417"
+                                                                    src="https://usciachaplainsafrica.org/wp-content/uploads/2023/03/call.jpg"
+                                                                    class="attachment-full size-full wp-image-6263"
+                                                                    alt=""
+                                                                    srcset="https://usciachaplainsafrica.org/wp-content/uploads/2023/03/call.jpg 626w, https://usciachaplainsafrica.org/wp-content/uploads/2023/03/call-300x200.jpg 300w"
+                                                                    sizes="(max-width: 626px) 100vw, 626px" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4c2fc51"
+                                                    data-id="4c2fc51" data-element_type="column">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-d6bfcba elementor-widget elementor-widget-ct_heading"
+                                                            data-id="d6bfcba" data-element_type="widget"
+                                                            data-widget_type="ct_heading.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div id="ct_heading-d6bfcba"
+                                                                    class="ct-heading h-align- sub- ct-heading-left item-st-line-top1">
+                                                                    <div class="ct-item--inner">
+                                                                        <div class="ct-inline-css"
+                                                                            data-css="
+            ">
+                                                                        </div>
+                                                                        <h3 class="item--title st-line-top1 case-animate-time"
+                                                                            data-wow-delay="ms">
+                                                                            <div class="ct-heading-divider"><span></span>
+                                                                            </div>
+                                                                            <span class="sp-main">
+
+                                                                                Contact us now and we take care of answering
+                                                                                your questions.
+
+                                                                            </span>
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="elementor-element elementor-element-f409baa elementor-widget elementor-widget-ct_ctf7"
+                                                            data-id="f409baa" data-element_type="widget"
+                                                            data-widget_type="ct_ctf7.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="ct-contact-form-layout1 style1 ">
+                                                                    <div class="ct-contact-form-inner">
+                                                                        <div class="ct-contact-form">
+
+                                                                            <div class="wpcf7 no-js" id="wpcf7-f91-p24-o1"
+                                                                                lang="en-US" dir="ltr">
+                                                                                <div class="screen-reader-response">
+                                                                                    <p role="status" aria-live="polite"
+                                                                                        aria-atomic="true"></p>
+                                                                                    <ul></ul>
+                                                                                </div>
+                                                                                <form action="/contact/#wpcf7-f91-p24-o1"
+                                                                                    method="post"
+                                                                                    class="wpcf7-form init cf7mls-no-scroll cf7mls-no-moving-animation"
+                                                                                    aria-label="Contact form"
+                                                                                    novalidate="novalidate"
+                                                                                    data-status="init">
+                                                                                    <div style="display: none;">
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7"
+                                                                                            value="91" />
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7_version"
+                                                                                            value="5.8" />
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7_locale"
+                                                                                            value="en_US" />
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7_unit_tag"
+                                                                                            value="wpcf7-f91-p24-o1" />
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7_container_post"
+                                                                                            value="24" />
+                                                                                        <input type="hidden"
+                                                                                            name="_wpcf7_posted_data_hash"
+                                                                                            value="" />
+                                                                                    </div>
+                                                                                    <div class="input-filled">
+                                                                                        <p><span class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-name"><input
+                                                                                                    size="40"
+                                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    placeholder="Your name*"
+                                                                                                    value=""
+                                                                                                    type="text"
+                                                                                                    name="your-name" /></span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="input-filled">
+                                                                                        <p><span class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-email"><input
+                                                                                                    size="40"
+                                                                                                    class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    placeholder="Your mail*"
+                                                                                                    value=""
+                                                                                                    type="email"
+                                                                                                    name="your-email" /></span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="input-filled">
+                                                                                        <p><span class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-phone"><input
+                                                                                                    size="40"
+                                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    placeholder="Phone*"
+                                                                                                    value=""
+                                                                                                    type="text"
+                                                                                                    name="your-phone" /></span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="input-filled">
+                                                                                        <p><span class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-subject"><input
+                                                                                                    size="40"
+                                                                                                    class="wpcf7-form-control wpcf7-text"
+                                                                                                    aria-invalid="false"
+                                                                                                    placeholder="Enter Subject"
+                                                                                                    value=""
+                                                                                                    type="text"
+                                                                                                    name="your-subject" /></span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="input-filled">
+                                                                                        <p><button type="submit"
+                                                                                                class="wpcf7-submit btn btn-block"><i
+                                                                                                    class="fac fac-check-circle space-right"></i>Contact
+                                                                                                Now</button>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="wpcf7-response-output"
+                                                                                        aria-hidden="true"></div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div><!-- .entry-content -->
+                            </article><!-- #post-24 -->
+                        </main><!-- #main -->
+                    </div><!-- #primary -->
+
+
                 </div>
             </div>
-        </div>
-
-    </footer>
-    <!-- End Footer -->
-
-
-    <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
-    <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
-
-</body>
-
-</html>
+        </div><!-- #content inner -->
+    </div><!-- #content -->
+@endsection

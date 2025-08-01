@@ -45,6 +45,14 @@ class RoleChangeController extends Controller
         return back();
     }
 
+     //delete User Account
+    public function deleteUserAccount($id){
+        User::where('id',$id)->delete();
+
+        Alert::success('Delete Success', 'Admin Account Deleted Successfully....');
+        return back();
+    }
+
      //change user Account to Admin
 
      public function changeAdminRole($id){
@@ -69,7 +77,7 @@ class RoleChangeController extends Controller
     {
         $searchKey = request('searchKey');
 
-        $query = User::select('id', 'name', 'nickname', 'email','phone','address')
+        $query = User::select('id','last_name', 'first_name', 'email','phone','grade','country' )
             ->whereIn('role', ['user']);
 
         if ($searchKey) {
@@ -87,5 +95,28 @@ class RoleChangeController extends Controller
         return view('super-admin.roleChange.userList', compact('data','adminCount'));
     }
 
+public function editUser($id)
+{
+    $user = User::findOrFail($id);
+    return view('profile.edit_user', compact('user'));
+}
+
+public function updateUser(Request $request, $id)
+{
+    $request->validate([
+        'last_name' => 'required|string',
+        'first_name' => 'nullable|string',
+        'email' => 'required|email|unique:users,email,'.$id,
+        'phone' => 'nullable|string',
+        'grade' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+        // Ajoute les autres validations si nécessaire
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->update($request->only(['last_name', 'first_name', 'email', 'phone', 'grade','country',]));
+
+    return redirect()->route('userList')->with('success', 'User updated successfully');
+}
 
 }

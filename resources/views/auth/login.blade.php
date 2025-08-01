@@ -48,7 +48,12 @@
                                             <i class="fa-brands fa-github me-2"></i> Login with Github
                                         </a>
                                     </div>
+
+
                                    </div>
+                                   <div class="text-center mt-3">
+                                        <a class="small" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                                    </div>
                                 </form>
                                 <hr>
 
@@ -62,7 +67,7 @@
 
     </div>
 
-</div>-->
+</div>
 
 @endsection
 

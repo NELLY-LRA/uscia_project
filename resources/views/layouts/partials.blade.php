@@ -159,44 +159,53 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarContent" >
-                        <ul class="navbar-nav">
-                            <!-- User Dropdown -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                                    id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <span class="mr-2 text-dark">
-                                        @if (auth()->user()->name != null)
-                                            {{ auth()->user()->name }}
-                                        @else
-                                            {{ auth()->user()->nickname }}
-                                        @endif
-                                    </span>
-                                    <img class="rounded-circle" width="40" height="40"
-                                        src="{{ auth()->user()->profile ? asset('adminProfile/' . auth()->user()->profile) : asset('admin/img/undraw_profile.svg') }}">
-                                </a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+    <ul class="navbar-nav">
+        <!-- User Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 text-dark">
+                    @if (auth()->user()->last_name != null)
+                        {{ auth()->user()->last_name }}
+                    @else
+                        {{ auth()->user()->first_name }}
+                    @endif
+                </span>
+                <img class="rounded-circle" width="40" height="40"
+                    src="{{ auth()->user()->profile ? asset('adminProfile/' . auth()->user()->profile) : asset('admin/img/undraw_profile.svg') }}">
+            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                    aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-600"></i> Profile
-                                    </a>
-                                    @if (auth()->user()->role == 'superadmin')
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fas fa-user-plus fa-sm fa-fw mr-2 text-gray-600"></i> Add Admin
-                                        </a>
-                                    @endif
-                                    @if (auth()->user()->provider == 'simple')
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-600"></i> Change Password
-                                        </a>
-                                    @endif
-                                    <div class="dropdown-divider"></div>
-                                    <form method="POST" action="{{ route('logout') }}" class="dropdown-item p-0">
-                                        @csrf
-                                        <button type="submit"
-                                            class="btn btn-link dropdown-item text-danger">Logout</button>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="userDropdown">
+
+                <!-- Lien vers le profil -->
+                <a class="dropdown-item" href="{{ route('profileDetails') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-600"></i> Profile
+                </a>
+
+                <!-- Ajouter un admin (visible seulement pour le superadmin) -->
+                @if (auth()->user()->role == 'super-admin')
+                    <a class="dropdown-item" href="{{ route('add_admin') }}">
+                        <i class="fas fa-user-plus fa-sm fa-fw mr-2 text-gray-600"></i> Add Admin
+                    </a>
+                @endif
+
+                <!-- Changer le mot de passe (seulement pour les comptes simples) -->
+                @if (auth()->user()->role == 'super-admin')
+                    <a class="dropdown-item" href="{{ route('changePassword') }}">
+                        <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-600"></i> Change Password
+                    </a>
+                @endif
+
+                <div class="dropdown-divider"></div>
+
+                <!-- Déconnexion -->
+                <form method="POST" action="{{ route('logout') }}" class="dropdown-item p-0">
+                    @csrf
+                    <button type="submit" class="btn btn-link dropdown-item text-danger">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i> Logout
+                    </button>
                                     </form>
                                 </div>
                             </li>

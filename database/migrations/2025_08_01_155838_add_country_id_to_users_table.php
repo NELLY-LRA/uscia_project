@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('country')->nullable()->after('grade');
+             $table->unsignedBigInteger('country_id')->nullable()->after('grade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
+
         });
     }
 
@@ -22,7 +24,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('country');
+                $table->dropForeign(['country_id']);
+            $table->dropColumn('country_id');
         });
     }
-}; 
+};

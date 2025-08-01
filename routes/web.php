@@ -5,26 +5,38 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SuperAdmin\NationalAdminController;
 use App\Http\Controllers\SuperAdmin\RoleChangeController;
+use Illuminate\Support\Facades\Password;
 
 
 
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
 
-Route::get('/accueil', function () {
-    return view('accueil');
-});
+Route::get('/missions-vision', function () {
+    return view('missions-vision');
+})->name('missions');
+
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
+
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
+
+Route::get('/our-social-works', function () {
+    return view('our-social-works');
+})->name('social-works');
+
+
+Route::get('/trainings', function () {
+    return view('trainings-uscia-africa');
+})->name('trainings');
 
 
 
@@ -85,10 +97,9 @@ Route::delete('/super-admin/admins/{id}', [NationalAdminController::class, 'dest
  //profile*/
     Route::prefix('profile')->group(function(){
         Route::get('detail', [ProfileController::class, 'profileDetails'])->name('profileDetails');
-        Route::post('update', [ProfileController::class, 'update'])->name('adminProfileUpdate');
+         Route::get('edit/{id}', [ProfileController::class, 'editAdmin'])->name('editAdmin');
+        Route::post('update/{id}', [ProfileController::class, 'updateAdmin'])->name('updateAdmin');
         Route::get('account/{id}', [ProfileController::class, 'accountProfile'])->name('accountProfile');
-
-
         Route::get('create/adminAccount', [ProfileController::class, 'createAdminAccount'])->name('add_admin');
         Route::post('create/adminAccount', [ProfileController::class, 'create'])->name('createAdmin');
     });
@@ -102,5 +113,23 @@ Route::delete('/super-admin/admins/{id}', [NationalAdminController::class, 'dest
         Route::get('userList',[RoleChangeController::class, 'userList'])->name('userList');
         Route::get('deleteUserAccount/{id}',[RoleChangeController::class, 'deleteUserAccount'])->name('deleteUserAccount');
         Route::get('changeAdminRole/{id}',[RoleChangeController::class, 'changeAdminRole'])->name('changeAdminRole');
-
+Route::get('edit/{id}', [RoleChangeController::class, 'editUser'])->name('editUser');
+Route::post('update/{id}', [RoleChangeController::class, 'updateUser'])->name('updateUser');
     });
+
+//Forgot
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function (\Illuminate\Http\Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with('status', __($status))
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
